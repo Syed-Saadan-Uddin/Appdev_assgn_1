@@ -114,12 +114,12 @@ class UserProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 60),
           const Text(
-            'John Doe',
+            'Shiekh Chilly',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.red),
           ),
           const SizedBox(height: 10),
           const Text(
-            "John Doe exists. John Doe builds. John Doe innovates. What's next? Only time will tell...",
+            "Shiekh Chilly likes to haunt DAA students",
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 14, color: Colors.grey),
           ),
