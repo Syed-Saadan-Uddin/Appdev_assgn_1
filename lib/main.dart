@@ -46,23 +46,23 @@ class _CurvedArrowPainter extends CustomPainter {
 
     final Path path = Path();
     
-    // Main vertical line
-    path.moveTo(size.width * 0.5, size.height * 0.2);  // Start from top
-    path.lineTo(size.width * 0.5, size.height * 0.65); // Go straight down
     
-    // Longer curve to the right at the bottom
+    path.moveTo(size.width * 0.5, size.height * 0.2);  
+    path.lineTo(size.width * 0.5, size.height * 0.65); 
+    
+    
     path.quadraticBezierTo(
-      size.width * 0.5,   // control point x
-      size.height * 0.7,  // control point y
-      size.width * 0.75,  // end point x (moved further right)
-      size.height * 0.7   // end point y
+      size.width * 0.5,   
+      size.height * 0.7, 
+      size.width * 0.75,  
+      size.height * 0.7   
     );
 
-    // Simple arrow head
-    path.moveTo(size.width * 0.5, size.height * 0.2);   // Center
-    path.lineTo(size.width * 0.35, size.height * 0.35);  // Left
-    path.moveTo(size.width * 0.5, size.height * 0.2);   // Center
-    path.lineTo(size.width * 0.65, size.height * 0.35);  // Right
+    
+    path.moveTo(size.width * 0.5, size.height * 0.2);   
+    path.lineTo(size.width * 0.35, size.height * 0.35);  
+    path.moveTo(size.width * 0.5, size.height * 0.2);   
+    path.lineTo(size.width * 0.65, size.height * 0.35); 
 
     canvas.drawPath(path, paint);
   }
@@ -132,38 +132,38 @@ class UserProfileScreen extends StatelessWidget {
 }
 
 
-/// Custom clipper to create the wavy effect
+
 class WaveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
     
-    // Start at top-left
+   
     path.lineTo(0, 0);
     
-    // Draw line to the starting point of the wave
+    
     path.lineTo(0, size.height * 0.92);
     
-    // First curve - brought control points closer horizontally
+    
     path.quadraticBezierTo(
-      size.width * 0.35, // moved closer to center (was 0.25)
-      size.height * 0.65, // keeping deep curve
-      size.width * 0.5, // end point x
-      size.height * 0.95, // end point y
+      size.width * 0.35, 
+      size.height * 0.65, 
+      size.width * 0.5, 
+      size.height * 0.95, 
     );
     
-    // Second curve - brought control points closer horizontally
+   
     path.quadraticBezierTo(
-      size.width * 0.70, // moved closer to center (was 0.75)
-      size.height * 1.05, // keeping dramatic dip
-      size.width, // end point x
-      size.height * 0.92, // end point y
+      size.width * 0.70, 
+      size.height * 1.05,
+      size.width,
+      size.height * 0.92, 
     );
     
-    // Line to top-right corner
+   
     path.lineTo(size.width, 0);
     
-    // Close the path
+    
     path.close();
     return path;
   }
@@ -172,7 +172,7 @@ class WaveClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
 
-/// Tab section for Posts, Comments, and Stats
+
 class TabSection extends StatefulWidget {
   const TabSection({super.key});
 
@@ -221,7 +221,7 @@ class _TabSectionState extends State<TabSection> with SingleTickerProviderStateM
   }
 }
 
-/// Sample posts tab
+
 class PostsTab extends StatelessWidget {
   const PostsTab({super.key});
 
@@ -257,7 +257,7 @@ class PostsTab extends StatelessWidget {
   }
 }
 
-/// Comments Tab
+
 class CommentsTab extends StatelessWidget {
   const CommentsTab({super.key});
 
@@ -294,7 +294,7 @@ Widget commentCard(String title, String comment, String date) {
               children: [
                 const Padding(
                   padding: EdgeInsets.only(top: 3),
-                  child: CurvedArrowIcon(size: 18, color: Colors.grey), // ✅ Fixed here
+                  child: CurvedArrowIcon(size: 18, color: Colors.grey),
                 ),
                 const SizedBox(width: 5),
                 Expanded(
@@ -313,7 +313,7 @@ Widget commentCard(String title, String comment, String date) {
           ],
         ),
       ),
-      const Divider(height: 1, color: Colors.grey), // Thin line below
+      const Divider(height: 1, color: Colors.grey), 
     ],
   );
 }
@@ -328,12 +328,12 @@ class StatsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 30), // Adjust this value to move the stats down
+        const SizedBox(height: 30), 
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             statItem("19", "Posts"),
-            const SizedBox(width: 100), // Space between the items
+            const SizedBox(width: 100), 
             statItem("32", "Comments"),
           ],
         ),
